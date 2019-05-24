@@ -194,6 +194,8 @@ class BulkModelAdmin(admin.ModelAdmin):
 
         context.update(extra_context or {})
 
+        print(context)
+        
         return self.render_change_form(request, context, add=True, change=False, obj=None, form_url=form_url)
 
     def response_bulk(self, request, formset):
