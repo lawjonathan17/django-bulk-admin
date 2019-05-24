@@ -190,12 +190,13 @@ class BulkModelAdmin(admin.ModelAdmin):
             inline_admin_formsets=inline_formsets,
             errors=errors,
             preserved_filters=self.get_preserved_filters(request),
+            adminform=self.form,
         )
 
         context.update(extra_context or {})
 
         print(context)
-        
+
         return self.render_change_form(request, context, add=True, change=False, obj=None, form_url=form_url)
 
     def response_bulk(self, request, formset):
