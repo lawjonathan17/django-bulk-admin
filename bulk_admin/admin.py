@@ -194,7 +194,7 @@ class BulkModelAdmin(admin.ModelAdmin):
             inline_admin_formsets=inline_formsets,
             errors=errors,
             preserved_filters=self.get_preserved_filters(request),
-            # adminform=self.form,
+            adminform=inline_formsets,
         )
 
         context.update(extra_context or {})
