@@ -180,6 +180,7 @@ class BulkModelAdmin(admin.ModelAdmin):
         print("type(inline_formsets)")
         print(type(inline_formsets))
         print(inline_formsets)
+        print(*inline_formsets, sep = ", ")
         context = dict(
             self.admin_site.each_context(request) if django.VERSION >= (1, 8) else self.admin_site.each_context(),
             bulk=True,
