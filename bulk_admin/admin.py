@@ -177,6 +177,7 @@ class BulkModelAdmin(admin.ModelAdmin):
             for formset_errors in formset.errors:
                 errors.extend(list(six.itervalues(formset_errors)))
 
+        print(inline_formsets)
         context = dict(
             self.admin_site.each_context(request) if django.VERSION >= (1, 8) else self.admin_site.each_context(),
             bulk=True,
@@ -190,12 +191,12 @@ class BulkModelAdmin(admin.ModelAdmin):
             inline_admin_formsets=inline_formsets,
             errors=errors,
             preserved_filters=self.get_preserved_filters(request),
-            adminform=self.form,
+            # adminform=self.form,
         )
 
         context.update(extra_context or {})
 
-        print(context)
+        # print(context)
 
         return self.render_change_form(request, context, add=True, change=False, obj=None, form_url=form_url)
 
