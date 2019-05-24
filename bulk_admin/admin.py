@@ -177,6 +177,8 @@ class BulkModelAdmin(admin.ModelAdmin):
             for formset_errors in formset.errors:
                 errors.extend(list(six.itervalues(formset_errors)))
 
+        print("type(inline_formsets)")
+        print(type(inline_formsets))
         print(inline_formsets)
         context = dict(
             self.admin_site.each_context(request) if django.VERSION >= (1, 8) else self.admin_site.each_context(),
