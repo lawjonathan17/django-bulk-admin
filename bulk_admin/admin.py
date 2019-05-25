@@ -30,7 +30,7 @@ import uuid
 _RE_BULK_FILE = re.compile(r'^([^\\-]+)-([^\\-]+)$')
 
 class DummyForm(forms.ModelForm):
-    dummy = None
+    form = None
 
 class BulkModelAdmin(admin.ModelAdmin):
 
