@@ -181,6 +181,8 @@ class BulkModelAdmin(admin.ModelAdmin):
         print(type(inline_formsets))
         print(inline_formsets)
         print(*inline_formsets, sep = ", ")
+        print("form_url")
+        print(form_url)
         context = dict(
             self.admin_site.each_context(request) if django.VERSION >= (1, 8) else self.admin_site.each_context(),
             bulk=True,
@@ -195,7 +197,7 @@ class BulkModelAdmin(admin.ModelAdmin):
             errors=errors,
             preserved_filters=self.get_preserved_filters(request),
             # adminform=inline_formsets,
-            adminform=super(BulkModelAdmin, self).get_form(request)
+            # adminform=super(BulkModelAdmin, self).get_form(request, **kwargs)
         )
 
         context.update(extra_context or {})
