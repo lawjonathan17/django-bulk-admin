@@ -187,8 +187,9 @@ class BulkModelAdmin(admin.ModelAdmin):
         print(type(inline_formsets))
         print(inline_formsets)
         print(*inline_formsets, sep = ", ")
-        print("form_url")
-        print(form_url)
+        print("request")
+        print(type(request))
+        print(request)
         context = dict(
             self.admin_site.each_context(request) if django.VERSION >= (1, 8) else self.admin_site.each_context(),
             bulk=True,
@@ -207,7 +208,8 @@ class BulkModelAdmin(admin.ModelAdmin):
             # adminform=super(BulkModelAdmin, self).get_form(request) #object 'ContainerForm' has no attribute 'form'
             # searching for ContainerForm gives me nothing
             #writing a dummy form - uses models
-            adminform=DummyModelForm
+            # adminform=DummyModelForm
+            # but that ModelForm has no modelclass, nothing in models.py
         )
 
         context.update(extra_context or {})
