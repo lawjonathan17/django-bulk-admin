@@ -29,8 +29,12 @@ import uuid
 
 _RE_BULK_FILE = re.compile(r'^([^\\-]+)-([^\\-]+)$')
 
-class DummyForm(forms.ModelForm):
-    form = None
+class DummyForm():
+    def is_multipart():
+        return False
+
+class DummyModelForm(forms.ModelForm):
+    form = DummyForm
 
 class BulkModelAdmin(admin.ModelAdmin):
 
@@ -203,7 +207,7 @@ class BulkModelAdmin(admin.ModelAdmin):
             # adminform=super(BulkModelAdmin, self).get_form(request) #object 'ContainerForm' has no attribute 'form'
             # searching for ContainerForm gives me nothing
             #writing a dummy form - uses models
-            adminform=DummyForm
+            adminform=DummyModelForm
         )
 
         context.update(extra_context or {})
