@@ -29,7 +29,8 @@ import uuid
 
 _RE_BULK_FILE = re.compile(r'^([^\\-]+)-([^\\-]+)$')
 
-
+class DummyForm(forms.ModelForm):
+    dummy = None
 
 class BulkModelAdmin(admin.ModelAdmin):
 
@@ -199,7 +200,10 @@ class BulkModelAdmin(admin.ModelAdmin):
             preserved_filters=self.get_preserved_filters(request),
             # adminform=inline_formsets,
             # adminform=super(BulkModelAdmin, self).get_form(request, **kwargs) #kwargs not define
-            adminform=super(BulkModelAdmin, self).get_form(request)
+            # adminform=super(BulkModelAdmin, self).get_form(request) #object 'ContainerForm' has no attribute 'form'
+            # searching for ContainerForm gives me nothing
+            #writing a dummy form - uses models
+            adminform=DummyForm
         )
 
         context.update(extra_context or {})
