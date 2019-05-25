@@ -29,7 +29,7 @@ import uuid
 
 _RE_BULK_FILE = re.compile(r'^([^\\-]+)-([^\\-]+)$')
 
-cl
+
 
 class BulkModelAdmin(admin.ModelAdmin):
 
