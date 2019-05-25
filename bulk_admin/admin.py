@@ -29,6 +29,7 @@ import uuid
 
 _RE_BULK_FILE = re.compile(r'^([^\\-]+)-([^\\-]+)$')
 
+cl
 
 class BulkModelAdmin(admin.ModelAdmin):
 
@@ -197,7 +198,7 @@ class BulkModelAdmin(admin.ModelAdmin):
             errors=errors,
             preserved_filters=self.get_preserved_filters(request),
             # adminform=inline_formsets,
-            # adminform=super(BulkModelAdmin, self).get_form(request, **kwargs)
+            adminform=super(BulkModelAdmin, self).get_form(request, **kwargs)
         )
 
         context.update(extra_context or {})
